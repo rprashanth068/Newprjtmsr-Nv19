@@ -129,6 +129,23 @@
     }
   }
 
+  .entityNameRow {
+    .flex1 {
+      flex: 1;
+      .entityInput {
+        padding-top: 0;
+        input {
+          height: 28px;
+          border: none;
+        }
+      }
+    }
+    .flex4 {
+      flex: 4;
+      padding-right: 10px;
+    }
+  }
+
   .togglespan {
     color: black;
   }

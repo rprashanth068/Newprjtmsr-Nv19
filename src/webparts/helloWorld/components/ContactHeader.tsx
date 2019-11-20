@@ -1,6 +1,8 @@
 import * as React from "react";
 import styles from "./HelloWorld.module.scss";
-const toggle_ico = require("../../../icons/NRD-00001_02013_ICO_ToggleLeft cccccc_001.svg");
+const individual = require("../../../icons/NRD-00001_02013_ICO_ToggleLeft cccccc_001.svg");
+const entity = require("../../../icons/NRD-00001_02013_ICO_ToggleRight cccccc_001 (2).svg");
+
 
 export interface IContactHeaderProps {
   contactData: {
@@ -8,8 +10,10 @@ export interface IContactHeaderProps {
     save1: any;
     delete: any;
     delete1: any;
-  };
-}
+    formType: string;
+    formChange: (formType) => void;
+  }
+};
 
 export class ContactHeader extends React.Component<IContactHeaderProps, {}> {
   constructor(props) {
@@ -18,7 +22,9 @@ export class ContactHeader extends React.Component<IContactHeaderProps, {}> {
 
   state = {
     save: this.props.contactData.save,
-    delete: this.props.contactData.delete
+    delete: this.props.contactData.delete,
+    formIcon: individual,
+    formType: this.props.contactData.formType
   };
 
   iconOver = type => {
@@ -46,6 +52,13 @@ export class ContactHeader extends React.Component<IContactHeaderProps, {}> {
         break;
     }
   };
+
+  toggleForm = form => {
+    const formIcon = form === 'individual' ? entity: individual;
+    const formType = form === 'individual' ? 'entity': 'individual';
+    this.props.contactData.formChange(formType);
+    this.setState({formIcon: formIcon, formType: formType});
+  }
 
   render() {
     return (
@@ -75,12 +88,12 @@ export class ContactHeader extends React.Component<IContactHeaderProps, {}> {
           <div className={`${styles.flex3} ${styles.toggleContainer}`}>
             <span className={styles.togglespan}>Individuals</span>
             <img
-              src={toggle_ico as string}
+              src={this.state.formIcon as string}
               height="12px"
               width="25px"
               className={styles.toggleIcon}
               alt="toggleicon"
-              // onClick={this.toggleForms}
+              onClick={() => this.toggleForm(this.state.formType)}
             />
             <span className={styles.togglespan}>Entities</span>
           </div>

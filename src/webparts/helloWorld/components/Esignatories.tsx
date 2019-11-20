@@ -181,7 +181,7 @@ export class Esignatories extends React.Component<{}, {}> {
             />
           </span>
         </div>
-        <div className={`${styles["sign-Tabel"]} ${styles["mLeft"]}`}>
+        <div className={`${styles.commentsTable}`}>
           <table className={styles["table-Head"]}>
             <thead>
               <tr>
@@ -201,9 +201,7 @@ export class Esignatories extends React.Component<{}, {}> {
             </thead>
           </table>
         </div>
-        <div
-          className={`${styles["sign-Tabel"]} ${styles["scroll-table"]} ${styles["mLeft"]}`}
-        >
+        <div className={` ${styles["scroll-table"]} ${styles.commentsTable}`}>
           <table className={styles["table-Body"]}>
             <tbody>
               {this.state.documents.map(row => (
@@ -236,7 +234,6 @@ export class Esignatories extends React.Component<{}, {}> {
             </tbody>
           </table>
         </div>
-        )}
         <hr className={styles.horizontalSeparator} />
       </div>
     );

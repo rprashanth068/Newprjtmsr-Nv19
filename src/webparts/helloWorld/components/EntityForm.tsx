@@ -23,19 +23,9 @@ export class EntityForm extends React.Component<{}, {}> {
     super(props);
   }
 
-  state = {
-    contactData: {
-      save: save_ico,
-      delete: delete_icon1,
-      save1: save_icon,
-      delete1: delete_icon
-    }
-  };
-
   render() {
     return (
       <div className={styles.myform}>
-        <EContactHeader contactData={this.state.contactData}></EContactHeader>
         <ENameFormRow></ENameFormRow>
         <EContactFormRow></EContactFormRow>
         <Esignatories></Esignatories>
